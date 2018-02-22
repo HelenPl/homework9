@@ -6,37 +6,49 @@ Class Car
 	public $color = 'оранжевый';
 	public $year = '2010';
 	public $price = '500000';
-	function count()
+	public function year()
 	{
-
+		return $this->year;
 	}
 }
 
 $audi1 = new Car;
 $audi2 = new Car;
 
+
 Class Tv
 {
 	public $name = 'Sony';
 	public $year = '2016';
 	public $price = '10000';
-	function change()
+	public $discount = '5';
+	public function priceYear()
 	{
+		$yearDiscount = ($this->year=='2016');
+		$discount = min($this->discount, $yearDiscount);
+		if ($this->discount) {
+			return round($this->price - ($this->price * $discount / 100));
+		} else {
+			return $this->price;
 		
+		}	
 	}
 }
 
 $tv1 = new Tv;
 $tv2 = new Tv;
 
+
 Class Pen 
 {
 	public $name = 'Cello';
 	public $color = 'синий';
 	public $price = '20';
-	function change()
+	function price()
 	{
-		$this->color = 'белый';
+		
+		return $this->price;
+		
 	}
 }
 
@@ -48,8 +60,14 @@ Class Duck
 {
 	public $category = 'Мандаринка';
 	public $price = '2000';
-	//function 
+	public function getCategory()
+	{
+		return $this->category;
+	}
 }
+
+$duck1 = new Duck;
+$duck2 = new Duck;
 
 Class Product 
 {
@@ -83,7 +101,7 @@ $canon2 = new Product;
 	<title>Классы и объекты</title>
 </head>
 <body>
-	<p>1. Инкапсуляция- это то, как мы создаем классы. Данные, которые принадлежат классу, хранятся в его свойствах, для каких-либо их преобразований этих данных используются методы.</p>
+	<p>1. Инкапсуляция- это то, как мы создаем классы. Данные, которые принадлежат классу, хранятся в его свойствах, для каких-либо действий с этими данными используются методы.</p>
 	<p>2. Плюсы: меньше писать кода, т.к. в классе уже инициализированны (при использовании оператора new вызывается __construct) сойства и нужно лишь подставить необходимые значения для конкретного объекта, а не задавать заново структуру для каждой переменной (как в массиве).<br>
 	Минусы: сложны для понимания.
 	</p>
